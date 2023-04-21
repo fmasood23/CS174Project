@@ -1,0 +1,76 @@
+#screen {
+    height: 100vh;
+    position: relative;
+    padding: 5%;
+}
+
+input {
+    display: block;
+}
+
+label {
+    font-size: 16px;
+    color: black;
+}
+
+#border {
+    border: 20px solid #35455D;
+    background-color: #FCFEFF;
+    padding: 10px;
+    position: relative;
+    padding-bottom: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 4px 4px 5px #808080;
+}
+
+#title {
+    color: black;
+}
+
+.smaller_title {
+    color: black;
+    text-align: left;
+    line-height: normal;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#login_wrapper {
+    float: left;
+    text-align: center;
+    margin-left: 13%;
+}
+
+#create_acc_wrapper {
+    float: right;
+    text-align: center;
+    margin-right: 13%;
+}
+
+.vertical {
+    border-left: 1px solid black;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+}
+
+.button {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 100px;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
+}
+
+body {
+    background-color: #EBF0F2;
+}

@@ -1,0 +1,84 @@
+#test1 {
+    margin: 30px;
+    color: black;
+}
+
+#promptSignIn {
+    text-align: center;
+    margin-top: 100px;
+    color: black;
+}
+
+#signInForm {
+    text-align: center;
+}
+
+#signInButton {
+    font-size: 20px;
+}
+
+#dateForm {
+    display: flex;
+    justify-content: center;
+}
+
+#calorieCircle {
+    background-color: #A9D4D9;
+    margin: auto;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mealDropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightgray;
+    margin: auto;
+    width: 40%;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#signInButton {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#signInButton:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
+}
+
+p {
+    color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+}
+
+label {
+    color: black;
+}
+
+body {
+    background-color: #EBF0F2;
+}

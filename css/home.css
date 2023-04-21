@@ -1,0 +1,49 @@
+#test {
+    color: black;
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 50px;
+    margin-left: 50px;
+    margin-top: 0px;
+    line-height: normal;
+    position: relative;
+}
+
+#screen {
+    height: 100vh;
+    position: relative;
+    margin-top: 10%;
+}
+
+#text_button_wrapper {
+    position: absolute;
+    display: inline-block;
+    width: 50%;
+}
+
+body {
+    background-color: #EBF0F2;
+}
+
+#login_route {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 8px;
+}
+
+#login_route:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
+}
+
+img {
+    width: 400px;
+    float: right;
+    margin-right: 170px;
+}
