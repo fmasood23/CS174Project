@@ -74,3 +74,29 @@ label {
 body {
     background-color: #EBF0F2;
 }
+
+@media (max-width : 900px) {
+    #login_wrapper {
+        float: none;
+        margin-left: 0%;
+        margin-bottom: 50px;
+    }
+
+    #create_acc_wrapper {
+        float: none;
+        margin-right: 0%;
+    }
+
+    .vertical {
+        display: none;
+    }
+
+    #border {
+        padding-bottom: 20px;
+    }
+
+    input {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
