@@ -47,3 +47,19 @@ img {
     float: right;
     margin-right: 170px;
 }
+
+@media (max-width : 768px) {
+    img {
+        float: none;
+    }
+
+    #text_button_wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    #test {
+        margin: 5px;
+    }
+}
