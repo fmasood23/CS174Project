@@ -48,9 +48,13 @@ img {
     margin-right: 170px;
 }
 
-@media (max-width : 768px) {
+@media (max-width : 1150px) {
     img {
         float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
     }
 
     #text_button_wrapper {
@@ -61,5 +65,9 @@ img {
 
     #test {
         margin: 5px;
+    }
+
+    #login_route {
+        margin-top: 40px;
     }
 }
