@@ -22,7 +22,7 @@
                         <label for="password">Password: </label>
                         <input type="password" placeholder="Enter Password" name="password" required>
 
-                        <button class="button" type="submit">Login</button>
+                        <button class="button" type="submit" name="login_button">Login</button>
                     </div>
                 </form>
             </div>
@@ -32,29 +32,45 @@
                 <p class="smaller_title">Create Account</p>
                 <form action="login.php" method="post">
                     <div id="create_acc_form">
-                        <label for="username">Enter your email: </label>
+                        <label for="email">Enter your email: </label>
                         <input type="email" placeholder="Enter Email" name="email" required>
 
                         <label for="username">Create a Username: </label>
-                        <input type="text" placeholder="Enter Username" name="user" required>
+                        <input type="text" placeholder="Enter Username" name="username" required>
 
                         <label for="password">Create a Password: </label>
-                        <input type="password" placeholder="Enter Password" name="pass" required>
+                        <input type="password" placeholder="Enter Password" name="password" required>
 
-                        <button class="button" type="submit">Create Account</button>
+                        <button class="button" type="submit" name="signup_button">Create Account</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <?php if (!empty($_POST)) {
+        include 'mysql_connector.php';
+        include 'user_functions.php';
+
+        global $conn;
         $username = $_POST["username"];
         $password = $_POST["password"];
-
-        if ($username == "admin" && $password == "admin") {
-            $status = setcookie("logged_in", "true");
-            header("location: profile.php");
+        if (isset($_POST["login_button"])) {
+            $userExists = checkLoginCreds($conn, $username, $password);
+            if ($userExists === TRUE) {
+                $status = setcookie("logged_in", "true");
+                header("location: profile.php");
+            }
         }
+        elseif (isset($_POST["signup_button"])) {
+            $email = $_POST["email"];
+            $accountCreationResult = createUserAccount($conn, $email, $username, $password);
+            if ($accountCreationResult === TRUE) {
+                $status = setcookie("logged_in", "true");
+                header("location: profile.php");
+            }
+        }
+
+        $conn->close();
     }
     ?>
 </body>
