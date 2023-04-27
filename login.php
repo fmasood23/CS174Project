@@ -58,14 +58,15 @@
             $userExists = checkLoginCreds($conn, $username, $password);
             if ($userExists === TRUE) {
                 $status = setcookie("logged_in", "true");
+                $status = setcookie("username", $username);
                 header("location: profile.php");
             }
-        }
-        elseif (isset($_POST["signup_button"])) {
+        } elseif (isset($_POST["signup_button"])) {
             $email = $_POST["email"];
             $accountCreationResult = createUserAccount($conn, $email, $username, $password);
             if ($accountCreationResult === TRUE) {
                 $status = setcookie("logged_in", "true");
+                $status = setcookie("username", $username);
                 header("location: profile.php");
             }
         }
