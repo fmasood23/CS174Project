@@ -12,6 +12,17 @@
     <?php
     if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
         ?>
+        <h2>Today's Calorie Intake</h2>
+        <br />
+        <div id="calorieCircle">
+            <p style="text-align: center; font-size: 20px"><strong>Calories Today:</strong> 1600 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Goal:</strong> 2000 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Remaining Intake:</strong> 400 cals</p>
+        </div>
+
+        <form method="post" action="tracker.php">
+            <button class="button" type="submit">Update Calorie Intake</button>
+        </form>
 
     <?php } else { ?>
         <div id="screen">
