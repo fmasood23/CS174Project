@@ -125,7 +125,6 @@
             newForm.className = "mealItemForm";
 
             const foodItemLabel = document.createElement("label");
-            // foodItemLabel.style.marginLeft = "-2px";
             foodItemLabel.className = "foodItemLabel";
             foodItemLabel.textContent = "Food:";
             foodItemLabel.style.marginRight = "6px";
@@ -133,7 +132,7 @@
 
             const foodItemSelect = document.createElement("select");
             foodItemSelect.className = "foodItem";
-            foodItemSelect.style.marginRight = "6px";
+            foodItemSelect.style.marginRight = "5px";
             newForm.appendChild(foodItemSelect);
 
             const xhr = new XMLHttpRequest();
@@ -166,41 +165,52 @@
             servingSizeLabel.style.marginRight = "6px";
             newForm.appendChild(servingSizeLabel);
 
-            const servingSizeValue = document.createElement("input");
-            servingSizeValue.type = "number";
-            servingSizeValue.name = "servingSize";
-            servingSizeValue.id = "servingSize";
-            servingSizeValue.value = "0";
-            servingSizeValue.min = "0";
-            servingSizeValue.step = "any";
-            servingSizeValue.required = true;
-            servingSizeValue.style.marginRight = "6px";
-            newForm.appendChild(servingSizeValue);
+            const servingSizeInput = document.createElement("input");
+            servingSizeInput.type = "number";
+            servingSizeInput.name = `servingSize_${formIndex}`;
+            servingSizeInput.id = `servingSize_${formIndex}`;
+            servingSizeInput.value = "0";
+            servingSizeInput.min = "0";
+            servingSizeInput.step = "any";
+            servingSizeInput.required = true;
+            servingSizeInput.style.marginRight = "6px";
+            servingSizeInput.addEventListener("input", () => {
+                const selectedOption = foodItemSelect.options[foodItemSelect.selectedIndex];
+                const caloriePerServing = parseFloat(selectedOption.getAttribute('data-calories'));
+                const servingSize = parseFloat(servingSizeInput.value);
+                const calorieAmount = Math.round(caloriePerServing * servingSize);
+                calorieAmountInput.value = calorieAmount;
+            });
+            newForm.appendChild(servingSizeInput);
 
             const foodCalsLabel = document.createElement("label");
             foodCalsLabel.className = "foodCalsLabel";
             foodCalsLabel.textContent = "Calories:";
-            foodCalsLabel.style.marginRight = "5px";
+            foodCalsLabel.style.marginRight = "6px";
             newForm.appendChild(foodCalsLabel);
 
-            const foodCalsInput = document.createElement("input");
-            foodCalsInput.type = "number";
-            foodCalsInput.name = "foodCals";
-            foodCalsInput.id = "foodCals";
-            foodCalsInput.min = "0";
-            foodCalsInput.step = "any";
-            foodCalsInput.required = true;
-            foodCalsInput.style.marginRight = "5px";
+            const calorieAmountInput = document.createElement("input");
+            calorieAmountInput.type = "number";
+            calorieAmountInput.name = `foodCals_${formIndex}`;
+            calorieAmountInput.id = `foodCals_${formIndex}`;
+            calorieAmountInput.value = "0";
+            calorieAmountInput.min = "0";
+            calorieAmountInput.step = "any";
+            calorieAmountInput.required = true;
+            calorieAmountInput.style.marginRight = "6px";
+            calorieAmountInput.addEventListener("input", () => {
+                const selectedOption = foodItemSelect.options[foodItemSelect.selectedIndex];
+                const caloriePerServing = parseFloat(selectedOption.getAttribute('data-calories'));
+                const servingSize = parseFloat(servingSizeInput.value);
+                const calorieAmount = parseFloat(calorieAmountInput.value);
 
-            <?php if (isset($_POST["foodCals"])) {
-                echo "foodCalsInput.value = \"" . $_POST["foodCals"] . "\";";
-            } else {
-                echo "foodCalsInput.value = \"0\";";
-            } ?>
-
-            foodCalsInput.addEventListener("input", calorieAmountInputChanged);
-
-            newForm.appendChild(foodCalsInput);
+                if (!isNaN(calorieAmount) && calorieAmount >= 0) {
+                    servingSizeInput.value = (calorieAmount / caloriePerServing).toFixed(2);
+                } else {
+                    servingSizeInput.value = 0;
+                }
+            });
+            newForm.appendChild(calorieAmountInput);
 
 
             const removeItemBtn = document.createElement("button");
@@ -209,8 +219,9 @@
             removeItemBtn.textContent = "Remove item";
             newForm.appendChild(removeItemBtn);
 
-            mealItemContainer.appendChild(newForm);
+
             formIndex++;
+            mealItemContainer.appendChild(newForm);
         });
 
         mealItemContainer.addEventListener("click", (event) => {
