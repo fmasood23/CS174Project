@@ -46,15 +46,7 @@ img {
 }
 
 #goal_wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding-left: 15%;
-    padding-right: 15%;
-    margin-bottom: 50px;
-}
-
-#dailyGoal {
+    text-align: center;
     color: black;
 }
 
@@ -77,6 +69,13 @@ label {
     color: black;
 }
 
-#change_pass_form {
+#change_pass_form,
+#change_goal_form {
     margin: 20px;
+    color: black;
+    text-align: center;
+}
+
+form {
+    text-align: center;
 }

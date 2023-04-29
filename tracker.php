@@ -24,7 +24,7 @@
 <body>
     <?php include './nav.php'; ?>
 
-    <h1 id="test1">calorie tracker</h1>
+    <h1 id="test1">Calorie Tracker</h1>
     <hr />
 
     <?php
@@ -79,7 +79,16 @@
         <br />
         <div id="calorieCircle">
             <p style="text-align: center; font-size: 20px"><strong>Calories Today:</strong> 1600 cals</p>
-            <p style="text-align: center; font-size: 20px"><strong>Goal:</strong> 2000 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Goal:</strong>
+                <?php
+                $val = "";
+                global $conn;
+                include 'mysql_connector.php';
+                include 'goal_functions.php';
+                $val .= getGoal($conn, $_COOKIE['username']);
+                $val .= " cals";
+                echo $val; ?>
+            </p>
             <p style="text-align: center; font-size: 20px"><strong>Remaining Intake:</strong> 400 cals</p>
         </div>
 

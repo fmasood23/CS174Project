@@ -27,9 +27,9 @@ function createUserAccount($conn, $email, $username, $password)
 
 function updatePassword($conn, $username, $password)
 {
-    $query = "UPDATE Users SET password = ? WHERE username = ?";
+    $query = "UPDATE Users set password=? WHERE username=?;";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $password, $username);
+    $stmt->bind_param("ss", $password, $username);
     $result = $stmt->execute();
 
     return $result;
