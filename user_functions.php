@@ -8,7 +8,7 @@ function checkLoginCreds($conn, $username, $password)
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if (is_null($result)) {
+    if (mysqli_num_rows($result) < 1) {
         return FALSE;
     }
     return TRUE;
