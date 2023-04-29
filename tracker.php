@@ -28,7 +28,7 @@
     <hr />
 
     <?php
-    if (isset($_COOKIE['logged_in'])) {
+    if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
         $months = range(1, 12);
         $year = date('Y');
         $years = range($year - 5, $year);
