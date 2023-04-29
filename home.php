@@ -36,7 +36,7 @@
     <?php } else { ?>
         <div id="screen">
             <div id="text_button_wrapper">
-                <p id="test">Welcome to [APP NAME]! <br> An efficient way to track and monitor calorie intake.</p>
+                <p id="test">Welcome to CalorieSmart! <br> An efficient way to track and monitor calorie intake.</p>
                 <form method="post">
                     <input id="login_route" type="submit" name="login" value="Get Started!" />
                 </form>
