@@ -1,7 +1,7 @@
 <?php
 
 $signed_in = '<nav>
-<div id="logo">APP NAME</div>
+<div id="logo">CalorieSmart</div>
 
 <label for="drop" class="toggle">Menu</label>
 <input type="checkbox" id="drop" />
@@ -14,7 +14,7 @@ $signed_in = '<nav>
 </nav>';
 
 $default = '<nav>
-<div id="logo">APP NAME</div>
+<div id="logo">CalorieSmart</div>
 
 <label for="drop" class="toggle">Menu</label>
 <input type="checkbox" id="drop" />
