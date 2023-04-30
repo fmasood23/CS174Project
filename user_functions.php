@@ -8,10 +8,7 @@ function checkLoginCreds($conn, $username, $password)
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if (mysqli_num_rows($result) < 1) {
-        return FALSE;
-    }
-    return TRUE;
+    return mysqli_num_rows($result) == 1;
 }
 
 // create user account
@@ -20,7 +17,15 @@ function createUserAccount($conn, $email, $username, $password)
     $query = "INSERT INTO Users (email, username, password) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sss", $email, $username, $password);
-    $result = $stmt->execute();
+
+    try {
+        $result = $stmt->execute();
+    } catch (mysqli_sql_exception $error) {
+        if ($error->getCode() == 1062) {
+            return FALSE;
+        }
+        throw $error;
+    }
 
     return $result;
 }

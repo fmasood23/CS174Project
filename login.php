@@ -1,3 +1,44 @@
+<?php
+$errorLogin = "";
+$errorSignUp = "";
+if (!empty($_POST)) {
+    include 'mysql_connector.php';
+    include 'user_functions.php';
+    include 'goal_functions.php';
+
+    global $conn;
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    if (isset($_POST["login_button"])) {
+        $userExists = checkLoginCreds($conn, $username, $password);
+        if ($userExists === TRUE) {
+            $status = setcookie("logged_in", "true");
+            $status = setcookie("username", $username);
+            header("location: profile.php");
+        } else {
+            $errorLogin = "Invalid login credentials.";
+        }
+    } elseif (isset($_POST["signup_button"])) {
+        $email = $_POST["email"];
+        $accountCreationResult = createUserAccount($conn, $email, $username, $password);
+
+        if ($accountCreationResult === FALSE) {
+            $errorSignUp = "Username already exists.";
+        } else {
+            $setGoal = defaultGoal($conn, $username, 0);
+
+            if ($setGoal === TRUE) {
+                $status = setcookie("logged_in", "true");
+                $status = setcookie("username", $username);
+                header("location: profile.php");
+            }
+        }
+    }
+
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -23,6 +64,11 @@
                         <input type="password" placeholder="Enter Password" name="password" required>
 
                         <button class="button" type="submit" name="login_button">Login</button>
+                        <?php if (!empty($errorLogin)) { ?>
+                            <p id="error_message">
+                                <?php echo $errorLogin; ?>
+                            </p>
+                        <?php } ?>
                     </div>
                 </form>
             </div>
@@ -42,41 +88,16 @@
                         <input type="password" placeholder="Enter Password" name="password" required>
 
                         <button class="button" type="submit" name="signup_button">Create Account</button>
+                        <?php if (!empty($errorSignUp)) { ?>
+                            <p id="error_message">
+                                <?php echo $errorSignUp; ?>
+                            </p>
+                        <?php } ?>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <?php if (!empty($_POST)) {
-        include 'mysql_connector.php';
-        include 'user_functions.php';
-        include 'goal_functions.php';
-
-        global $conn;
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        if (isset($_POST["login_button"])) {
-            $userExists = checkLoginCreds($conn, $username, $password);
-            if ($userExists === TRUE) {
-                $status = setcookie("logged_in", "true");
-                $status = setcookie("username", $username);
-                header("location: profile.php");
-            }
-        } elseif (isset($_POST["signup_button"])) {
-            $email = $_POST["email"];
-            $accountCreationResult = createUserAccount($conn, $email, $username, $password);
-            $setGoal = defaultGoal($conn, $username, 0);
-
-            if ($accountCreationResult === TRUE && $setGoal === TRUE) {
-                $status = setcookie("logged_in", "true");
-                $status = setcookie("username", $username);
-                header("location: profile.php");
-            }
-        }
-
-        $conn->close();
-    }
-    ?>
 </body>
 
 </html>
