@@ -44,10 +44,20 @@ label {
     margin-left: 13%;
 }
 
+#login_form {
+    text-align: center;
+}
+
 #create_acc_wrapper {
     float: right;
     text-align: center;
     margin-right: 13%;
+}
+
+#error_message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
 }
 
 .vertical {
