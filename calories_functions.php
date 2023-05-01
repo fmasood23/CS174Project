@@ -1,7 +1,6 @@
 <?php
 
 
-
 //add calories
 funtion addCalories($conn, $username, $date, $calories_added)
 {
