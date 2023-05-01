@@ -36,9 +36,9 @@
         $year = date('Y');
         $years = range($year - 5, $year);
 
-        $current_month = date('n');
-        $current_day = date('j');
-        $current_year = date('Y');
+        $current_month = isset($_POST['month']) ? $_POST['month'] : date('n');
+        $current_day = isset($_POST['day']) ? $_POST['day'] : date('j');
+        $current_year = isset($_POST['year']) ? $_POST['year'] : date('Y');
         ?>
         <h4 style="text-align: center;">Date:</h4>
         <form id="dateForm" method="post">
