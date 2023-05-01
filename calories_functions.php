@@ -2,7 +2,7 @@
 
 
 //add calories
-funtion addCalories($conn, $username, $date, $calories_added)
+function addCalories($conn, $username, $date, $calories_added)
 {
     $query = "INSERT INTO Calories (username, date, calories_added) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($query);

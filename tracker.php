@@ -9,13 +9,16 @@
     <script style="text-align: center;">
         $(document).ready(function () {
             $('#addMealBtn').click(function () {
-                $.ajax({
-                    url: './trackerAddMeal.php',
-                    type: 'GET',
-                    success: function (result) {
-                        $('#addMeal').html(result);
-                    },
-                });
+                let $addMeal = $('#addMeal');
+                if ($addMeal.html().trim() === '') {
+                    $.ajax({
+                        url: './trackerAddMeal.php',
+                        type: 'GET',
+                        success: function (result) {
+                            $addMeal.html(result);
+                        },
+                    });
+                }
             });
         });
     </script>
