@@ -9,7 +9,6 @@ funtion addMealInfo($conn, $name, $serving_size, $calories)
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sss", $name, $serving_size, $calories);
     $result = $stmt->execute();
-
     return $result;
 }
 
