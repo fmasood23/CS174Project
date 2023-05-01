@@ -24,5 +24,4 @@ function updateCalories($conn, $username, $date, $calories_added)
 }
 
 
-
 ?>
