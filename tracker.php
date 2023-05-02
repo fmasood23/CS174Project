@@ -86,8 +86,18 @@
                 <?php
                 $val = "";
                 global $conn;
+                $name = $_POST["name"];
+                $serving_size = $_POST["serving_size"];
+                $calories = $_POST["calories"];
+                if(isset($_POST["addMealBtn"])){
+                    $addMeal = addMealInfo($conn, $name, $serving_size, $calories);
+                }
+
                 include 'mysql_connector.php';
                 include 'goal_functions.php';
+                include 'calories_functions';
+                include 'meals_functions';
+
                 $val .= getGoal($conn, $_COOKIE['username']);
                 $val .= " cals";
                 echo $val; ?>
