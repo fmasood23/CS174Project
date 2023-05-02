@@ -9,13 +9,16 @@
     <script style="text-align: center;">
         $(document).ready(function () {
             $('#addMealBtn').click(function () {
-                $.ajax({
-                    url: './trackerAddMeal.php',
-                    type: 'GET',
-                    success: function (result) {
-                        $('#addMeal').html(result);
-                    },
-                });
+                let $addMeal = $('#addMeal');
+                if ($addMeal.html().trim() === '') {
+                    $.ajax({
+                        url: './trackerAddMeal.php',
+                        type: 'GET',
+                        success: function (result) {
+                            $addMeal.html(result);
+                        },
+                    });
+                }
             });
         });
     </script>
@@ -33,9 +36,9 @@
         $year = date('Y');
         $years = range($year - 5, $year);
 
-        $current_month = date('n');
-        $current_day = date('j');
-        $current_year = date('Y');
+        $current_month = isset($_POST['month']) ? $_POST['month'] : date('n');
+        $current_day = isset($_POST['day']) ? $_POST['day'] : date('j');
+        $current_year = isset($_POST['year']) ? $_POST['year'] : date('Y');
         ?>
         <h4 style="text-align: center;">Date:</h4>
         <form id="dateForm" method="post">
@@ -83,8 +86,18 @@
                 <?php
                 $val = "";
                 global $conn;
+                $name = $_POST["name"];
+                $serving_size = $_POST["serving_size"];
+                $calories = $_POST["calories"];
+                if(isset($_POST["addMealBtn"])){
+                    $addMeal = addMealInfo($conn, $name, $serving_size, $calories);
+                }
+
                 include 'mysql_connector.php';
                 include 'goal_functions.php';
+                include 'calories_functions';
+                include 'meals_functions';
+
                 $val .= getGoal($conn, $_COOKIE['username']);
                 $val .= " cals";
                 echo $val; ?>
