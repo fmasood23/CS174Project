@@ -2,11 +2,11 @@
 
 
 //add calories
-function addCalories($conn, $username, $date, $calories_added)
+function addCalories($conn, $username, $date, $calories_added, $meal_type)
 {
-    $query = "INSERT INTO calories (username, date, calories_added) VALUES (?, ?, ?)";
+    $query = "INSERT INTO calories (username, date, calories_added, meal_type) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sss", $username, $date, $calories_added);
+    $stmt->bind_param("ssss", $username, $date, $calories_added, $meal_type);
     $result = $stmt->execute();
 
     return $result;

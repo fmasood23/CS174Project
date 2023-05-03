@@ -8,18 +8,17 @@
 
 <body>
     <div style="text-align: center">
-        <form id="dateSelect" method="post">
-            <label name="mealType">Meal:</label>
-            <select name="mealType">
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-                <option value="other">Other</option>
-            </select>
-        </form>
 
         <div id="mealItemContainer">
             <form class="mealItemForm" method="post">
+                <label name="mealType_name">Meal:</label>
+                <select name="mealType">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="other">Other</option>
+                </select>
+                </br>
                 <label for="foodItemLabel">Food:</label>
                 <select name="foodItemSelect" id="foodItemSelect" required>
                     <?php
@@ -100,7 +99,9 @@
 
                     $user_cal = $_COOKIE['username'];
                     $date_cal = date("Y-m-d");
-                    $result = addCalories($conn, $user_cal, $date_cal, $foodCals);
+                    $selectOption = $_POST['mealType'];
+
+                    $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption);
 
                     if ($result) {
                         echo '<p>works</p>';
