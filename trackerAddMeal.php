@@ -108,7 +108,7 @@
                     $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption, $foodItemSelect);
 
                     if ($result) {
-                        echo '<meta http-equiv="refresh" content="0; URL=trackerAddMeal.php">';
+                        echo '<meta http-equiv="refresh" content="0; URL=tracker.php">';
 
                     }
                 }
@@ -143,7 +143,7 @@
             $result = deleteMeal($conn, $user_meal, $selected);
 
             if ($result) {
-                echo '<meta http-equiv="refresh" content="0; URL=trackerAddMeal.php">';
+                echo '<meta http-equiv="refresh" content="0; URL=tracker.php">';
 
             }
         }
