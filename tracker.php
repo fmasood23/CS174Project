@@ -85,10 +85,17 @@
             <p style="text-align: center; font-size: 20px"><strong>Goal:</strong>
                 <?php
                 $val = "";
-                global $conn;
                 include 'mysql_connector.php';
                 include 'goal_functions.php';
-
+                include 'calories_functions';
+                include 'meals_functions';
+                global $conn;
+                $name = $_POST["name"];
+                $serving_size = $_POST["serving_size"];
+                $calories = $_POST["calories"];
+                if(isset($_POST["addMealBtn"])){
+                    $addMeal = addMealInfo($conn, $name, $serving_size, $calories);
+                }
                 $val .= getGoal($conn, $_COOKIE['username']);
                 $val .= " cals";
                 echo $val; ?>

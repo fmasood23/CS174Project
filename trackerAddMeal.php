@@ -52,7 +52,6 @@
                     echo "value=\"" . $_POST["foodCals"] . "\"";
                 } ?>>
 
-                <input type="submit" value="Submit">
 
                 <script>
                     const servingSizeInput1 = document.getElementById('servingSize');
@@ -91,6 +90,23 @@
                     fclose($handle);
                 }
             }
+            ?>
+
+            <input type="submit" value="Submit">    
+            <?php
+                if(isset($_POST["submit"])){
+                    include 'mysql_connector.php';
+                    include 'goal_functions.php';
+                    include 'calories_functions.php';
+                    include 'meals_functions.php';
+
+                    global $conn;
+                    $username = $_POST["username"];
+                    $date = $_POST["date"];
+                    $calories_added = $_POST["calories_added"];
+                    $addCalories = addCalories($conn, $username, $date, $calories_added);
+                    }
+                } 
             ?>
         </div>
     </div>
