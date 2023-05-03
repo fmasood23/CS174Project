@@ -46,31 +46,14 @@
                 <label for="servingSizeLabel">Serving Size:</label>
                 <input type="number" name="servingSize" id="servingSize" value="0" min="0" step="any" required>
                 <label for="foodCalsLabel">Calories:</label>
-                <input type="number" name="foodCals" id="foodCals" min="0" step="any" required <?php if (
+                <input type="number" name="foodCals" id="foodCals" value="0" required readonly <?php if (
                     isset($_POST["foodCals"])
                 ) {
                     echo "value=\"" . $_POST["foodCals"] . "\"";
-                } else {
-                    echo "value=\"0\"";
-                } ?> oninput="calorieAmountInputChanged()">
-                <button class="removeItem" type="button">Remove item</button>
-                <script>
-                    function calorieAmountInputChanged() {
-                        const servingSizeInput = document.getElementById('servingSize');
-                        const calorieAmountInput = document.getElementById('foodCals');
-                        const selectedOption = mealNameSelect.options[mealNameSelect.selectedIndex];
-                        const caloriePerServing = parseFloat(selectedOption.getAttribute('data-calories'));
-                        const servingUnit = selectedOption.getAttribute('data-serving-unit');
-                        const servingSize = parseFloat(servingSizeInput.value);
-                        const calorieAmount = parseFloat(calorieAmountInput.value);
+                } ?>>
 
-                        if (!isNaN(calorieAmount) && calorieAmount >= 0) {
-                            servingSizeInput.value = (calorieAmount / caloriePerServing).toFixed(2);
-                        } else {
-                            servingSizeInput.value = 0;
-                        }
-                    }
-                </script>
+                <input type="submit" value="Submit">
+                <button class="removeItem" type="button">Remove item</button>
 
                 <script>
                     const servingSizeInput = document.getElementById('servingSize');
@@ -91,7 +74,6 @@
                         calorieAmountInput.value = calorieAmount;
                     });
                 </script>
-
             </form>
 
             <?php if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
@@ -104,6 +86,8 @@
                             $foodCals =
                                 ($data[2] * $servingSize) / $data[1]
                             ;
+
+                            break;
                         }
                     }
                     fclose($handle);
@@ -118,6 +102,7 @@
     <script>
         const mealItemContainer = document.getElementById("mealItemContainer");
         const addFoodBtn = document.getElementById("addFood");
+        const saveMealBtn = document.getElementById("saveMeal");
         let formIndex = 0;
 
         addFoodBtn.addEventListener("click", () => {
@@ -212,13 +197,11 @@
             });
             newForm.appendChild(calorieAmountInput);
 
-
             const removeItemBtn = document.createElement("button");
             removeItemBtn.className = "removeItem";
             removeItemBtn.type = "button";
             removeItemBtn.textContent = "Remove item";
             newForm.appendChild(removeItemBtn);
-
 
             formIndex++;
             mealItemContainer.appendChild(newForm);
