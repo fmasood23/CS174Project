@@ -19,7 +19,7 @@
         </form>
 
         <div id="mealItemContainer">
-            <form class="mealItemForm">
+            <form class="mealItemForm" method="post">
                 <label for="foodItemLabel">Food:</label>
                 <select name="foodItemSelect" id="foodItemSelect" required>
                     <?php
@@ -52,7 +52,8 @@
                     echo "value=\"" . $_POST["foodCals"] . "\"";
                 } ?>>
 
-                <input type="submit" value="Submit">
+                <input type="submit" name="submit" value="Submit">
+                <!-- <button class="removeItem" type="button">Remove item</button> -->
 
                 <script>
                     const servingSizeInput1 = document.getElementById('servingSize');
@@ -74,27 +75,45 @@
                     });
                 </script>
             </form>
-            <?php if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
+
+            <?php
+            $foodCals = 0;
+            if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
                 $foodItemSelect = $_POST["foodItemSelect"];
                 $servingSize = $_POST["servingSize"];
                 if (($handle = fopen("food_calories.csv", "r")) !== false) {
                     $header = fgetcsv($handle, 564, ",");
                     while (($data = fgetcsv($handle, 564, ",")) !== false) {
                         if ($data[0] == $foodItemSelect) {
-                            $foodCals =
-                                ($data[2] * $servingSize) / $data[1]
-                            ;
-
+                            $foodCals = ((float) $data[2] * (float) $servingSize) / (float) $data[1];
                             break;
                         }
                     }
                     fclose($handle);
                 }
+
+                if (isset($_POST["submit"])) {
+                    include 'mysql_connector.php';
+                    include 'calories_functions.php';
+
+                    global $conn;
+
+                    $user_cal = $_COOKIE['username'];
+                    $date_cal = date("Y-m-d");
+                    $result = addCalories($conn, $user_cal, $date_cal, $foodCals);
+
+                    if ($result) {
+                        echo '<p>works</p>';
+                    }
+                }
             }
             ?>
-        </div>
-    </div>
 
+            <!-- <button id="saveMeal" type="button">Save Meal and Calorie Info</button> -->
+        </div>
+
+        <!-- <button id="addFood" type="button">Add food item</button> -->
+    </div>
     <script>
         const mealItemContainer = document.getElementById("mealItemContainer");
         //const addFoodBtn = document.getElementById("addFood");
