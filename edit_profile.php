@@ -98,8 +98,8 @@
 
         <?php
         if (isset($_POST['sign_out'])) {
-            SETCOOKIE("logged_in", '', 0, "/proj");
-            SETCOOKIE('logged_in', 'false', 0, '/proj');
+            SETCOOKIE("logged_in", '', time() - 3600, "/");
+            SETCOOKIE('logged_in', 'false', 0, '/');
 
             unset($_COOKIE['username']);
             setcookie('username', '', time() - 3600, '/');

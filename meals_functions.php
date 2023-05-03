@@ -3,7 +3,7 @@
 //add serving size
 //add calories
 
-funtion addMealInfo($conn, $name, $serving_size, $calories)
+function addMealInfo($conn, $name, $serving_size, $calories)
 {
     $query = "INSERT INTO Meals (name, serving_size, calories) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($query);
