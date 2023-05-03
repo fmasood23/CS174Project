@@ -76,24 +76,29 @@
                 </script>
             </form>
 
-            <?php if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
+            <?php
+            if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
                 $foodItemSelect = $_POST["foodItemSelect"];
                 $servingSize = $_POST["servingSize"];
                 if (($handle = fopen("food_calories.csv", "r")) !== false) {
                     $header = fgetcsv($handle, 564, ",");
                     while (($data = fgetcsv($handle, 564, ",")) !== false) {
                         if ($data[0] == $foodItemSelect) {
-                            $foodCals =
-                                ($data[2] * $servingSize) / $data[1]
-                            ;
-
+                            $foodCals = ($data[2] * $servingSize) / $data[1];
+                            include 'mysql_connector.php';
+                            include 'calories_functions.php';
+                            $username = "quinklan";
+                            $date = "2023-05-03";
+                            $result = addCalories($conn, $username, $date, $foodCals);
                             break;
                         }
                     }
                     fclose($handle);
                 }
-            } ?>
-            </form>
+            }
+            ?>
+
+            <!-- <button id="saveMeal" type="button">Save Meal and Calorie Info</button> -->
         </div>
 
         <button id="addFood" type="button">Add food item</button>
@@ -180,6 +185,7 @@
             calorieAmountInput.id = `foodCals_${formIndex}`;
             calorieAmountInput.value = "0";
             calorieAmountInput.min = "0";
+            calorieAmountInput.readOnly = true;
             calorieAmountInput.step = "any";
             calorieAmountInput.required = true;
             calorieAmountInput.style.marginRight = "6px";
@@ -197,12 +203,23 @@
             });
             newForm.appendChild(calorieAmountInput);
 
+            const submitItemBtn = document.createElement("button");
+            submitItemBtn.style.marginRight = "6px";
+            submitItemBtn.className = "submitItem";
+            submitItemBtn.type = "button";
+            submitItemBtn.textContent = "Submit";
+            newForm.appendChild(submitItemBtn);
+
+            submitItemBtn.addEventListener("click", () => {
+                const form = submitItemBtn.closest(".mealItemForm");
+                form.submit();
+            });
+
             const removeItemBtn = document.createElement("button");
             removeItemBtn.className = "removeItem";
             removeItemBtn.type = "button";
             removeItemBtn.textContent = "Remove item";
             newForm.appendChild(removeItemBtn);
-
             formIndex++;
             mealItemContainer.appendChild(newForm);
         });
