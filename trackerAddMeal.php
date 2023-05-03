@@ -3,11 +3,16 @@
 
 <head>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/tracker.css" />
 
 </head>
 
 <body>
     <div style="text-align: center">
+        <?php include './nav.php'; ?>
+
+        <h2>Add a meal!</h2>
 
         <div id="mealItemContainer">
             <form class="mealItemForm" method="post">
@@ -52,7 +57,6 @@
                 } ?>>
 
                 <input type="submit" name="submit" value="Submit">
-                <!-- <button class="removeItem" type="button">Remove item</button> -->
 
                 <script>
                     const servingSizeInput1 = document.getElementById('servingSize');
@@ -104,132 +108,13 @@
                     $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption);
 
                     if ($result) {
-                        echo '<p>works</p>';
+                        echo '<p>Meal Added</p>';
                     }
                 }
             }
             ?>
-
-            <!-- <button id="saveMeal" type="button">Save Meal and Calorie Info</button> -->
         </div>
-
-        <!-- <button id="addFood" type="button">Add food item</button> -->
     </div>
-    <script>
-        const mealItemContainer = document.getElementById("mealItemContainer");
-        //const addFoodBtn = document.getElementById("addFood");
-        const saveMealBtn = document.getElementById("saveMeal");
-        let formIndex = 0;
-
-        // addFoodBtn.addEventListener("click", () => {
-        //     const newForm = document.createElement("form");
-        //     newForm.className = "mealItemForm";
-
-        const foodItemLabel = document.createElement("label");
-        foodItemLabel.className = "foodItemLabel";
-        foodItemLabel.textContent = "Food:";
-        foodItemLabel.style.marginRight = "6px";
-        //newForm.appendChild(foodItemLabel);
-
-        const foodItemSelect = document.createElement("select");
-        foodItemSelect.className = "foodItem";
-        foodItemSelect.style.marginRight = "5px";
-        //newForm.appendChild(foodItemSelect);
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'food_calories.csv');
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const data = xhr.responseText;
-                const rows = data.split("\n").map(row => row.split(","));
-                const header = rows.shift();
-                rows.forEach(row => {
-                    const option = document.createElement("option");
-                    option.value = row[0];
-                    option.dataset.calories = row[2];
-                    option.dataset.servingUnit = row[3];
-                    option.text = row[0];
-                    foodItemSelect.appendChild(option);
-                });
-            } else {
-                console.error(xhr.statusText);
-            }
-        };
-        xhr.onerror = function () {
-            console.error(xhr.statusText);
-        };
-        xhr.send();
-
-        const servingSizeLabel = document.createElement("label");
-        servingSizeLabel.className = "servingSizeLabel";
-        servingSizeLabel.textContent = "Serving Size:";
-        servingSizeLabel.style.marginRight = "6px";
-        //newForm.appendChild(servingSizeLabel);
-
-        const servingSizeInput = document.createElement("input");
-        servingSizeInput.type = "number";
-        servingSizeInput.name = `servingSize_${formIndex}`;
-        servingSizeInput.id = `servingSize_${formIndex}`;
-        servingSizeInput.value = "0";
-        servingSizeInput.min = "0";
-        servingSizeInput.step = "any";
-        servingSizeInput.required = true;
-        servingSizeInput.style.marginRight = "6px";
-        servingSizeInput.addEventListener("input", () => {
-            const selectedOption = foodItemSelect.options[foodItemSelect.selectedIndex];
-            const caloriePerServing = parseFloat(selectedOption.getAttribute('data-calories'));
-            const servingSize = parseFloat(servingSizeInput.value);
-            const calorieAmount = Math.round(caloriePerServing * servingSize);
-            calorieAmountInput.value = calorieAmount;
-        });
-        //newForm.appendChild(servingSizeInput);
-
-        const foodCalsLabel = document.createElement("label");
-        foodCalsLabel.className = "foodCalsLabel";
-        foodCalsLabel.textContent = "Calories:";
-        foodCalsLabel.style.marginRight = "6px";
-        //newForm.appendChild(foodCalsLabel);
-
-        const calorieAmountInput = document.createElement("input");
-        calorieAmountInput.type = "number";
-        calorieAmountInput.name = `foodCals_${formIndex}`;
-        calorieAmountInput.id = `foodCals_${formIndex}`;
-        calorieAmountInput.value = "0";
-        calorieAmountInput.min = "0";
-        calorieAmountInput.step = "any";
-        calorieAmountInput.required = true;
-        calorieAmountInput.style.marginRight = "6px";
-        calorieAmountInput.addEventListener("input", () => {
-            const selectedOption = foodItemSelect.options[foodItemSelect.selectedIndex];
-            const caloriePerServing = parseFloat(selectedOption.getAttribute('data-calories'));
-            const servingSize = parseFloat(servingSizeInput.value);
-            const calorieAmount = parseFloat(calorieAmountInput.value);
-
-            if (!isNaN(calorieAmount) && calorieAmount >= 0) {
-                servingSizeInput.value = (calorieAmount / caloriePerServing).toFixed(2);
-            } else {
-                servingSizeInput.value = 0;
-            }
-        });
-        //newForm.appendChild(calorieAmountInput);
-
-        // const removeItemBtn = document.createElement("button");
-        // removeItemBtn.className = "removeItem";
-        // removeItemBtn.type = "button";
-        // removeItemBtn.textContent = "Remove item";
-        // newForm.appendChild(removeItemBtn);
-
-        formIndex++;
-        //mealItemContainer.appendChild(newForm);
-        //});
-
-        // mealItemContainer.addEventListener("click", (event) => {
-        //     if (event.target.classList.contains("removeItem")) {
-        //         event.target.closest(".mealItemForm").remove();
-        //         formIndex--;
-        //     }
-        // });
-    </script>
 </body>
 
 </html>
