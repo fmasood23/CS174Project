@@ -2,11 +2,11 @@
 
 
 //add calories
-function addCalories($conn, $username, $date, $calories_added, $meal_type)
+function addCalories($conn, $username, $date, $calories_added, $meal_type, $meal_name)
 {
-    $query = "INSERT INTO calories (username, date, calories_added, meal_type) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO calories (username, date, calories_added, meal_type, meal_name) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $username, $date, $calories_added, $meal_type);
+    $stmt->bind_param("sssss", $username, $date, $calories_added, $meal_type, $meal_name);
     $result = $stmt->execute();
 
     return $result;
@@ -16,11 +16,38 @@ function updateCalories($conn, $username, $date, $calories_added)
 {
     $query = "UPDATE calories SET calories_added = ? WHERE username = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $calories_added, $username);
+    $stmt->bind_param("ss", $calories_added, $username);
     $result = $stmt->execute();
 
     return $result;
 }
 
+function getAllMeals($conn, $username)
+{
 
+    $query = "SELECT meal_name FROM calories WHERE username='";
+    $query .= $username;
+    $query .= "';";
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        $categories = array($row["meal_name"]);
+        $arrlength = count($categories);
+
+        for ($x = 0; $x < $arrlength; $x++) {
+            echo "<option selected='selected'>";
+            echo $categories[$x];
+            echo "</option>";
+        }
+    }
+}
+
+function deleteMeal($conn, $username, $meal)
+{
+    $query = "DELETE FROM calories WHERE username = ? AND meal_name = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $username, $meal);
+    $result = $stmt->execute();
+
+    return $result;
+}
 ?>

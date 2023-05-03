@@ -105,16 +105,51 @@
                     $date_cal = date("Y-m-d");
                     $selectOption = $_POST['mealType'];
 
-                    $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption);
+                    $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption, $foodItemSelect);
 
                     if ($result) {
-                        echo '<p>Meal Added</p>';
+                        echo '<meta http-equiv="refresh" content="0; URL=trackerAddMeal.php">';
+
                     }
                 }
             }
             ?>
         </div>
+
+        <br />
+        <h2>Delete a Meal!</h2>
+
+        <form class="deleteForm" method="post" action="trackerAddMeal.php">
+            <label name="meal_name">Select a Meal:</label>
+            <select name="meal">
+                <?php
+
+                include 'mysql_connector.php';
+                include 'calories_functions.php';
+
+                global $conn;
+                getAllMeals($conn, $_COOKIE['username']);
+                ?>
+            </select>
+            <input type="submit" name="delete" value="Delete">
+        </form>
+        <?php
+
+        if (isset($_POST["delete"])) {
+
+            $user_meal = $_COOKIE['username'];
+            $selected = $_POST['meal'];
+
+            $result = deleteMeal($conn, $user_meal, $selected);
+
+            if ($result) {
+                echo '<meta http-equiv="refresh" content="0; URL=trackerAddMeal.php">';
+
+            }
+        }
+        ?>
     </div>
+
 </body>
 
 </html>
