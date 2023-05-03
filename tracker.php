@@ -7,20 +7,20 @@
     <link rel="stylesheet" type="text/css" href="./css/tracker.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script style="text-align: center;">
-        $(document).ready(function () {
-            $('#addMealBtn').click(function () {
-                let $addMeal = $('#addMeal');
-                if ($addMeal.html().trim() === '') {
-                    $.ajax({
-                        url: './trackerAddMeal.php',
-                        type: 'GET',
-                        success: function (result) {
-                            $addMeal.html(result);
-                        },
-                    });
-                }
-            });
-        });
+        // $(document).ready(function () {
+        //     $('#addMealBtn').click(function () {
+        //         let $addMeal = $('#addMeal');
+        //         if ($addMeal.html().trim() === '') {
+        //             $.ajax({
+        //                 url: './trackerAddMeal.php',
+        //                 type: 'GET',
+        //                 success: function (result) {
+        //                     $addMeal.html(result);
+        //                 },
+        //             });
+        //         }
+        //     });
+        // });
     </script>
 </head>
 
@@ -98,9 +98,11 @@
 
         <br />
         <div style="text-align: center;">
-            <button id="addMealBtn" style="font-size: 20px;">Add meal to calorie intake</button>
-            <br />
-            <div id="addMeal"></div>
+            <form method="post" action="trackerAddMeal.php">
+                <button id="addMealBtn" style="font-size: 20px;">Add meal to calorie intake</button>
+                <br />
+                <div id="addMeal"></div>
+            </form>
         </div>
 
         <br />

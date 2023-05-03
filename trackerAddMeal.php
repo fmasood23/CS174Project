@@ -12,10 +12,10 @@
     <div style="text-align: center">
         <?php include './nav.php'; ?>
 
-        <h2>Add a meal!</h2>
+        <h2>Add a Meal!</h2>
 
         <div id="mealItemContainer">
-            <form class="mealItemForm" method="post">
+            <form class="mealItemForm" method="post" action="trackerAddMeal.php">
                 <label name="mealType_name">Meal:</label>
                 <select name="mealType">
                     <option value="breakfast">Breakfast</option>
