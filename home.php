@@ -15,7 +15,16 @@
         <h2>Today's Calorie Intake</h2>
         <br />
         <div id="calorieCircle">
-            <p style="text-align: center; font-size: 20px"><strong>Calories Today:</strong> 1600 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Calories Today:</strong>
+                <?php
+                $val = "";
+                global $conn;
+                include 'mysql_connector.php';
+                include 'calories_functions.php';
+                $val .= getTotalCals($conn, $_COOKIE['username'], date("Y-m-d"));
+                $val .= " cals";
+                echo $val; ?>
+            </p>
             <p style="text-align: center; font-size: 20px"><strong>Goal:</strong>
                 <?php
                 $val = "";

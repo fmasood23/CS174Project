@@ -5,23 +5,6 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/tracker.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script style="text-align: center;">
-        // $(document).ready(function () {
-        //     $('#addMealBtn').click(function () {
-        //         let $addMeal = $('#addMeal');
-        //         if ($addMeal.html().trim() === '') {
-        //             $.ajax({
-        //                 url: './trackerAddMeal.php',
-        //                 type: 'GET',
-        //                 success: function (result) {
-        //                     $addMeal.html(result);
-        //                 },
-        //             });
-        //         }
-        //     });
-        // });
-    </script>
 </head>
 
 <body>
