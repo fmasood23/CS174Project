@@ -172,7 +172,7 @@
                         $date_cal = date("Y-m-d");
                         $selectOption = $_POST['mealType'];
 
-                        $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption);
+                        $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption, $foodItemSelect);
 
                         if ($result) {
                             echo '<p>works</p>';
