@@ -35,7 +35,22 @@
                 $val .= " cals";
                 echo $val; ?>
             </p>
-            <p style="text-align: center; font-size: 20px"><strong>Remaining Intake:</strong> 400 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Remaining Intake:</strong>
+                <?php
+                global $conn;
+                include 'mysql_connector.php';
+                $total = getTotalCals($conn, $_COOKIE['username'], date("Y-m-d"));
+                $goal = getGoal($conn, $_COOKIE['username']);
+
+                $difference = (int) $goal - (int) $total;
+
+                if ($difference >= 0) {
+                    $difference .= " cals";
+                    echo $difference;
+                } else {
+                    echo "Completed <br> goal!";
+                } ?>
+            </p>
         </div>
 
         <form method="post" action="tracker.php">
