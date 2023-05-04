@@ -64,7 +64,8 @@
 
         <br />
         <div id="calorieCircle">
-            <p style="text-align: center; font-size: 20px"><strong>Calories Today:</strong> 1600 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Calories Intake:</strong>
+            </p>
             <p style="text-align: center; font-size: 20px"><strong>Goal:</strong>
                 <?php
                 $val = "";

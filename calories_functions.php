@@ -50,4 +50,24 @@ function deleteMeal($conn, $username, $meal)
 
     return $result;
 }
+
+function getTotalCals($conn, $username, $date)
+{
+    $count = 0;
+    $query = "SELECT calories_added FROM calories WHERE username = ? AND date = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $username, $date);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $count += (int) $row["calories_added"];
+        }
+        return $count;
+    } else {
+        return FALSE;
+    }
+
+}
 ?>
