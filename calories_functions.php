@@ -66,7 +66,7 @@ function getTotalCals($conn, $username, $date)
         }
         return $count;
     } else {
-        return FALSE;
+        return 0;
     }
 
 }

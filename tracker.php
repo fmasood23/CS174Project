@@ -59,12 +59,42 @@
                 <?php } ?>
             </select>
 
-            <button type="submit">Submit</button>
+            <button type="submit" name="get_date">Submit</button>
         </form>
+
+        <?php
+        if (isset($_POST["get_date"])) {
+            $current_date = $current_year;
+            $current_date .= "-";
+            if ($current_month < 10) {
+                $current_date .= "0";
+                $current_date .= $current_month;
+            } else {
+                $current_date .= $current_month;
+            }
+            $current_date .= "-";
+            if ($current_day < 10) {
+                $current_date .= "0";
+                $current_date .= $current_day;
+            } else {
+                $current_date .= $current_day;
+            }
+        } else {
+            $current_date = date("Y-m-d");
+        }
+        ?>
 
         <br />
         <div id="calorieCircle">
             <p style="text-align: center; font-size: 20px"><strong>Calories Intake:</strong>
+                <?php
+                $val = "";
+                global $conn;
+                include 'mysql_connector.php';
+                include 'calories_functions.php';
+                $val .= getTotalCals($conn, $_COOKIE['username'], $current_date);
+                $val .= " cals";
+                echo $val; ?>
             </p>
             <p style="text-align: center; font-size: 20px"><strong>Goal:</strong>
                 <?php
@@ -77,7 +107,22 @@
                 $val .= " cals";
                 echo $val; ?>
             </p>
-            <p style="text-align: center; font-size: 20px"><strong>Remaining Intake:</strong> 400 cals</p>
+            <p style="text-align: center; font-size: 20px"><strong>Remaining Intake:</strong>
+                <?php
+                global $conn;
+                include 'mysql_connector.php';
+                $total = getTotalCals($conn, $_COOKIE['username'], $current_date);
+                $goal = getGoal($conn, $_COOKIE['username']);
+
+                $difference = (int) $goal - (int) $total;
+
+                if ($difference > 0) {
+                    $difference .= " cals";
+                    echo $difference;
+                } else {
+                    echo "Completed <br> goal!";
+                } ?>
+            </p>
         </div>
 
         <br />
