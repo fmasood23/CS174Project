@@ -23,7 +23,7 @@
         $current_day = isset($_POST['day']) ? $_POST['day'] : date('j');
         $current_year = isset($_POST['year']) ? $_POST['year'] : date('Y');
         ?>
-        <h4 style="text-align: center;">Date:</h4>
+        <h4 style="text-align: center;">Select a Date:</h4>
         <form id="dateForm" method="post">
             <label style="margin-right: 5px">Month:</label>
             <select name="month" style="margin-right: 5px">
