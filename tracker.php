@@ -210,7 +210,6 @@
 
                     if (isset($_POST["submit"])) {
                         include 'mysql_connector.php';
-                        include 'calories_functions.php';
 
                         global $conn;
 

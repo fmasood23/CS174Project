@@ -17,9 +17,21 @@
     font-size: 20px;
 }
 
-#dateForm {
+#dateForm,
+#dateForm2 {
     display: flex;
     justify-content: center;
+    margin: 10px;
+}
+
+#date {
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+}
+
+select {
+    height: 30px;
 }
 
 #calorieCircle {

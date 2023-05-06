@@ -70,4 +70,27 @@ function getTotalCals($conn, $username, $date)
     }
 
 }
+
+
+function getRangeCals($conn, $username, $date_start, $date_end)
+{
+    $count = 0;
+    $query = "SELECT DISTINCT date FROM calories WHERE username = ? AND date >= ? AND date <= ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sss", $username, $date_start, $date_end);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $arr = array();
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($arr, $row["date"]);
+        }
+        return $arr;
+    } else {
+        return $arr;
+    }
+
+}
 ?>

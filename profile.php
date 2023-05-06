@@ -37,6 +37,10 @@
                 <input class="button" type="submit" name="change_profile" value="Edit Profile" />
             </form>
 
+            <form method="post" action="calorie_history.php">
+                <input class="button" type="submit" name="view_history" value="View Calorie History" />
+            </form>
+
             <form method="post">
                 <input class="button" type="submit" name="signout" value="Sign Out" />
             </form>
