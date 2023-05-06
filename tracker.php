@@ -193,7 +193,7 @@
                 </form>
 
 
-                <button id="customMealBtn" type="submit">Add Custom Meal</button>
+                <button id="customMealBtn" type="submit">Add Custom Food</button>
 
 
                 <script>
