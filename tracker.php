@@ -192,6 +192,96 @@
                     </script>
                 </form>
 
+
+                <button id="customMealBtn" type="submit">Add Custom Meal</button>
+
+
+                <script>
+                    const customMealBtn = document.getElementById('customMealBtn');
+                    const mealItemContainer = document.getElementById('mealItemContainer');
+                    let formIndex = 0;
+
+                    customMealBtn.addEventListener('click', function () {
+                        const newForm = document.createElement('form');
+                        newForm.className = 'customItemForm';
+                        newForm.method = 'post';
+
+                        const foodItemLabel = document.createElement("label");
+                        foodItemLabel.className = "foodItemLabel";
+                        foodItemLabel.textContent = "Food:";
+                        foodItemLabel.style.marginRight = "6px";
+                        newForm.appendChild(foodItemLabel);
+
+                        const foodItemInput = document.createElement("input");
+                        foodItemInput.className = "foodItem";
+                        foodItemInput.required = true;
+                        foodItemInput.style.width = "283px";
+                        foodItemInput.style.marginRight = "5px";
+                        newForm.appendChild(foodItemInput);
+
+                        const servingSizeLabel = document.createElement("label");
+                        servingSizeLabel.className = "servingSizeLabel";
+                        servingSizeLabel.textContent = "Serving Size:";
+                        servingSizeLabel.style.marginRight = "6px";
+                        newForm.appendChild(servingSizeLabel);
+
+                        const servingSizeInput = document.createElement("input");
+                        servingSizeInput.type = "number";
+                        servingSizeInput.value = "1";
+                        servingSizeInput.step = "any";
+                        servingSizeInput.required = true;
+                        servingSizeInput.readOnly = true;
+                        servingSizeInput.style.marginRight = "6px";
+                        newForm.appendChild(servingSizeInput);
+
+                        const foodCalsLabel = document.createElement("label");
+                        foodCalsLabel.className = "foodCalsLabel";
+                        foodCalsLabel.textContent = "Calories:";
+                        foodCalsLabel.style.marginRight = "6px";
+                        newForm.appendChild(foodCalsLabel);
+
+                        const calorieAmountInput = document.createElement("input");
+                        calorieAmountInput.type = "number";
+                        calorieAmountInput.value = "0";
+                        calorieAmountInput.min = "0";
+                        calorieAmountInput.step = "any";
+                        calorieAmountInput.required = true;
+                        calorieAmountInput.style.marginRight = "6px";
+                        newForm.appendChild(calorieAmountInput);
+
+
+                        const submitBtn = document.createElement('input');
+                        submitBtn.type = 'submit';
+                        submitBtn.name = 'submit';
+                        submitBtn.value = 'Submit';
+
+                        submitBtn.addEventListener('click', function (event) {
+                            event.preventDefault();
+
+                            const foodItemValue = foodItemInput.value;
+                            const servingSizeValue = servingSizeInput.value;
+                            const calorieAmountValue = calorieAmountInput.value;
+
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('POST', 'write_to_csv.php', true);
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                            const data = `foodItem=${encodeURIComponent(foodItemValue)}&servingSize=${encodeURIComponent(servingSizeValue)}&calorieAmount=${encodeURIComponent(calorieAmountValue)}`;
+
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                                    console.log(xhr.responseText);
+                                    location.reload();
+                                }
+                            };
+                            xhr.send(data);
+                        });
+
+                        newForm.appendChild(submitBtn);
+                        mealItemContainer.appendChild(newForm);
+                    });
+                </script>
+
                 <?php
                 $foodCals = 0;
                 if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
@@ -229,6 +319,8 @@
             <br />
             <div id="addMeal"></div>
         </div>
+
+
 
         <br />
         <div id="mealDropdown">
