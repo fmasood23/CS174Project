@@ -95,8 +95,8 @@
                         option.selected = true;
                     }
                     daySelect.appendChild(option);
-                    }
-                });
+                                }
+                            });
                 </script>
         </div>
 
@@ -238,6 +238,14 @@
                             label: 'Calories',
                             data: cals
                         }]
+                    },
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Total Calories by Date'
+                            }
+                        }
                     }
                 });
             </script>
