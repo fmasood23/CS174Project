@@ -74,6 +74,60 @@ select {
     border-color: #5B9EA6;
 }
 
+#submitMeal {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 100px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#customMealBtn {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#submitMeal:hover,
+#customMealBtn:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
+}
+
+#addContainer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#mealUpdateTitle {
+    line-height: normal;
+    margin: 10px;
+    margin-top: 30px;
+}
+
+#mealItemContainer {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
+#addMealDescription {
+    margin-bottom: 0;
+}
+
+#mealUpdateDescription {
+    font-size: 20px;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+
 p {
     color: black;
 }
@@ -89,6 +143,12 @@ h6 {
 
 label {
     color: black;
+}
+
+.equalSize {
+    height: 10%;
+    width: 50%;
+    box-sizing: border-box;
 }
 
 body {

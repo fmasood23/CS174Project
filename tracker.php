@@ -23,7 +23,7 @@
         $current_day = isset($_POST['day']) ? $_POST['day'] : date('j');
         $current_year = isset($_POST['year']) ? $_POST['year'] : date('Y');
         ?>
-        <h4 style="text-align: center;">Select a Date:</h4>
+        <h3 style="text-align: center;">Select a Date:</h3>
         <form id="dateForm" method="post">
             <label style="margin-right: 5px">Month:</label>
             <select name="month" id="monthSelect" style="margin-right: 5px">
@@ -95,8 +95,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                }
-            });
+                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                        });
         </script>
 
         <?php
@@ -163,11 +163,15 @@
         </div>
 
         <br />
-        <div style="text-align: center;">
+        <div>
             <div id="mealItemContainer">
+                <hr />
+                <h3 id="mealUpdateTitle">Update Meals!</h3>
+                <p id="mealUpdateDescription">Add a new meal item using the form below!
+                </p>
                 <form class="mealItemForm" method="post">
                     <label name="mealType_name">Meal:</label>
-                    <select name="mealType">
+                    <select class="equalSize" name="mealType">
                         <option value="breakfast">Breakfast</option>
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
@@ -175,7 +179,7 @@
                     </select>
                     </br>
                     <label for="foodItemLabel">Food:</label>
-                    <select name="foodItemSelect" id="foodItemSelect" required>
+                    <select class="equalSize" name="foodItemSelect" id="foodItemSelect" required>
                         <?php
                         if (($handle = fopen("food_calories.csv", "r")) !== false) {
                             $header = fgetcsv($handle, 564, ",");
@@ -197,16 +201,19 @@
                             }
                         } ?>
                     </select>
+                    </br>
                     <label for="servingSizeLabel">Serving Size:</label>
-                    <input type="number" name="servingSize" id="servingSize" value="0" min="0" step="any" required>
+                    <input type="number" name="servingSize" id="servingSize" class="equalSize" value="0" min="0" step="any"
+                        required>
+                    </br>
                     <label for="foodCalsLabel">Calories:</label>
-                    <input type="number" name="foodCals" id="foodCals" value="0" required readonly <?php if (
+                    <input type="number" name="foodCals" id="foodCals" class="equalSize" value="0" required readonly <?php if (
                         isset($_POST["foodCals"])
                     ) {
                         echo "value=\"" . $_POST["foodCals"] . "\"";
                     } ?>>
-
-                    <input type="submit" name="submit" value="Submit">
+                    </br>
+                    <input id="submitMeal" type="submit" name="submit" value="Submit">
 
                     <script>
                         const servingSizeInput1 = document.getElementById('servingSize');
@@ -229,9 +236,11 @@
                     </script>
                 </form>
 
-
-                <button id="customMealBtn" type="submit">Add Custom Food</button>
-
+                <div id="addContainer">
+                    <hr />
+                    <p id="addMealDescription">Can't find an item? Add it to the dataset using the form below! </p>
+                    <button id="customMealBtn" type="submit">Add Custom Food</button>
+                </div>
 
                 <script>
                     const customMealBtn = document.getElementById('customMealBtn');
@@ -256,6 +265,9 @@
                         foodItemInput.style.marginRight = "5px";
                         newForm.appendChild(foodItemInput);
 
+                        const newLine = document.createElement('br');
+                        newForm.appendChild(newLine);
+
                         const servingSizeLabel = document.createElement("label");
                         servingSizeLabel.className = "servingSizeLabel";
                         servingSizeLabel.textContent = "Serving Size:";
@@ -264,12 +276,16 @@
 
                         const servingSizeInput = document.createElement("input");
                         servingSizeInput.type = "number";
+                        servingSizeInput.style.width = "283px";
                         servingSizeInput.value = "1";
                         servingSizeInput.step = "any";
                         servingSizeInput.required = true;
                         servingSizeInput.readOnly = true;
                         servingSizeInput.style.marginRight = "6px";
                         newForm.appendChild(servingSizeInput);
+
+                        const newLine1 = document.createElement('br');
+                        newForm.appendChild(newLine1);
 
                         const foodCalsLabel = document.createElement("label");
                         foodCalsLabel.className = "foodCalsLabel";
@@ -283,14 +299,35 @@
                         calorieAmountInput.min = "0";
                         calorieAmountInput.step = "any";
                         calorieAmountInput.required = true;
+                        calorieAmountInput.style.width = "283px";
                         calorieAmountInput.style.marginRight = "6px";
                         newForm.appendChild(calorieAmountInput);
 
+                        const newLine2 = document.createElement('br');
+                        newForm.appendChild(newLine2);
 
                         const submitBtn = document.createElement('input');
                         submitBtn.type = 'submit';
                         submitBtn.name = 'submit';
                         submitBtn.value = 'Submit';
+                        submitBtn.style.backgroundColor = "#BFD1DF";
+                        submitBtn.style.borderColor = "#BFD1DF";
+                        submitBtn.style.width = "100px";
+                        submitBtn.style.height = "25px";
+                        submitBtn.style.fontSize = "15px";
+                        submitBtn.style.borderRadius = "8px";
+                        submitBtn.style.marginTop = "10px";
+
+                        submitBtn.addEventListener("mouseenter", function (event) {
+                            event.target.style.backgroundColor = "#5B9EA6";
+                            event.target.style.borderColor = "#5B9EA6";
+                        }, false);
+
+                        submitBtn.addEventListener("mouseleave", function (event) {
+                            event.target.style.backgroundColor = "#BFD1DF";
+                            event.target.style.borderColor = "#BFD1DF";
+                        }, false);
+
 
                         submitBtn.addEventListener('click', function (event) {
                             event.preventDefault();
