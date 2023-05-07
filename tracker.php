@@ -320,13 +320,6 @@
             <div id="addMeal"></div>
         </div>
 
-
-
-        <br />
-        <div id="mealDropdown">
-            <p>Meal: Breakfast</p>
-            <p>Calories: 1000</p>
-        </div>
         <br />
     <?php } else { ?>
         <h2 id="promptSignIn">
