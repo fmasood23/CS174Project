@@ -1,0 +1,26 @@
+#meal_container {
+    text-align: center;
+}
+
+#meal_table {
+    text-align: center;
+    margin: auto;
+    width: 60%;
+}
+
+#dateForm,
+#dateForm2 {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+  
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}

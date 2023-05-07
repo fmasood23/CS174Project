@@ -41,11 +41,29 @@ function getAllMeals($conn, $username)
     }
 }
 
-function deleteMeal($conn, $username, $meal)
-{
-    $query = "DELETE FROM calories WHERE username = ? AND meal_name = ?";
+function getIntakeFromDate($conn, $username, $date) {
+    $query = "
+        SELECT * FROM calories WHERE username = ? AND date = ? 
+        ORDER BY CASE meal_type 
+        WHEN 'breakfast' THEN 1 
+        WHEN 'lunch' THEN 2 
+        WHEN 'dinner' THEN 3 
+        ELSE 4 END
+    ";
+            
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $username, $meal);
+    $stmt->bind_param("ss", $username, $date);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    return $result;
+}
+
+function deleteMeal($conn, $calories_id)
+{
+    $query = "DELETE FROM calories WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $calories_id);
     $result = $stmt->execute();
 
     return $result;
