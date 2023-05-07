@@ -1,11 +1,25 @@
 #lineChart {
-    max-width: 70%;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px
 }
 
 #title {
     margin: 30px;
     color: black;
+}
+
+#date {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 100px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#date:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
 }
