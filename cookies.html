@@ -1,0 +1,25 @@
+<html>
+<head>
+   <script type="text/javascript">
+      function checkCookiesStats() {
+         if(navigator.cookieEnabled) {
+            document.getElementById("check").innerHTML="Cookies are enabled";
+         } else {
+            document.getElementById("check").innerHTML="Cookies are disabled";
+         }
+      }
+   </script>
+</head>
+<body onload="checkCookiesStats()">
+   <h2>Browser Cookies</h2>
+   <p id="check"></p>
+   <script language = "javascript" type = "text/javascript">
+         document.write("Javascript is enabled!")
+   </script>
+   
+   <noscript>
+      Sorry...JavaScript is needed to go ahead.
+   </noscript>      
+</body>
+</html>
+
