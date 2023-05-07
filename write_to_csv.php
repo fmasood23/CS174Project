@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 $foodItem = str_replace('"', '', $_POST['foodItem']);
 $servingSize = $_POST['servingSize'];
 $calorieAmount = $_POST['calorieAmount'];
