@@ -15,8 +15,8 @@ function checkLoginCreds($conn, $username, $password)
     } 
     else {
         $row = $result->fetch_assoc();
-        
-        return $password == $row["password"] ? "Login successful" : "Incorrect password.";
+
+        return $password == $row["password"] ? "Login successful." : "Incorrect password.";
     }
 }
 
