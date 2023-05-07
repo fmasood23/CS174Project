@@ -26,20 +26,21 @@
         <h4 style="text-align: center;">Select a Date:</h4>
         <form id="dateForm" method="post">
             <label style="margin-right: 5px">Month:</label>
-            <select name="month" style="margin-right: 5px">
+            <select name="month" id="monthSelect" style="margin-right: 5px">
                 <?php foreach ($months as $month) { ?>
                     <option value="<?php echo $month; ?>" <?php if ($month == $current_month) {
                            echo ' selected';
                        } ?>>
-                        <?php echo date('m', mktime(0, 0, 0, $month, 1));
-                        ?>
+                        <?php echo date('m', mktime(0, 0, 0, $month, 1)); ?>
                     </option>
                 <?php } ?>
             </select>
 
             <label style="margin-right: 5px">Day:</label>
-            <select name="day" style="margin-right: 5px">
-                <?php for ($day = 1; $day <= 31; $day++) { ?>
+            <select name="day" id="daySelect" style="margin-right: 5px">
+                <?php
+                $days_in_month = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
+                for ($day = 1; $day <= $days_in_month; $day++) { ?>
                     <option value="<?php echo $day; ?>" <?php if ($day == $current_day) {
                            echo ' selected';
                        } ?>>
@@ -61,6 +62,42 @@
 
             <button type="submit" name="get_date">Submit</button>
         </form>
+
+        <script>
+            const monthSelect = document.getElementById('monthSelect');
+            const daySelect = document.getElementById('daySelect');
+            const daysInMonth = [
+                31, // January
+                28, // February
+                31, // March
+                30, // April
+                31, // May
+                30, // June
+                31, // July
+                31, // August
+                30, // September
+                31, // October
+                30, // November
+                31  // December
+            ];
+
+            monthSelect.addEventListener('change', function () {
+                const selectedMonth = parseInt(monthSelect.value);
+                const days = daysInMonth[selectedMonth - 1];
+
+                daySelect.innerHTML = '';
+
+                for (let day = 1; day <= days; day++) {
+                    const option = document.createElement('option');
+                    option.value = day;
+                    option.textContent = day;
+                    if (day === <?php echo $current_day; ?>) {
+                option.selected = true;
+            }
+            daySelect.appendChild(option);
+                }
+            });
+        </script>
 
         <?php
         if (isset($_POST["get_date"])) {
