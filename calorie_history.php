@@ -5,11 +5,15 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/tracker.css" />
+    <link rel="stylesheet" type="text/css" href="./css/calorie_history.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <?php include 'nav.php'; ?>
+
+    <h1 id="title">Calorie Analytics</h1>
+    <hr />
 
     <?php
     if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
@@ -24,7 +28,7 @@
         <h4 style="text-align: center;">Select a Start and End Date:</h4>
         <div id="dateForm">
             <form method="post">
-                <label style="margin-right: 5px">Month: </label>
+                <label style="margin-right: 5px"><strong>Start: </strong> &emsp; Month: </label>
                 <select name="month" style="margin-right: 5px">
                     <?php foreach ($months as $month) { ?>
                         <option value="<?php echo $month; ?>" <?php if ($month == $current_month) {
@@ -70,7 +74,7 @@
         ?>
         <div id="dateForm2">
             <form method="post">
-                <label style="margin-right: 10px">Month:</label>
+                <label style="margin-right: 10px"><strong>End: </strong>&emsp; Month:</label>
                 <select name="month1" style="margin-right: 8px">
                     <?php foreach ($months1 as $month) { ?>
                         <option value="<?php echo $month; ?>" <?php if ($month == $current_month1) {
@@ -164,25 +168,17 @@
         }
 
         if ($valid) {
-            //CALL DB FUNCTION 
-            //get dates and put into array
-            //for date array call get total and insert into nested array 
-            // use nested array for graph
             global $conn;
             include 'mysql_connector.php';
             include 'calories_functions.php';
             $val = getRangeCals($conn, $_COOKIE['username'], $current_date, $current_date1);
-            //echo json_encode($val);
-    
+
             $nested_arr = array();
             foreach ($val as $dates) {
-                // echo '<p>';
-                // echo $dates;
-                // echo '</p>';
                 $total_cal = getTotalCals($conn, $_COOKIE['username'], $dates);
                 array_push($nested_arr, array("y" => $total_cal, "label" => $dates));
             }
-            //echo json_encode($nested_arr);
+
             ?>
             <script>
                 var values = <?php echo json_encode($nested_arr); ?>;
@@ -202,7 +198,7 @@
                     data: {
                         labels: dates,
                         datasets: [{
-                            label: 'Values',
+                            label: 'Calories',
                             data: cals
                         }]
                     }
