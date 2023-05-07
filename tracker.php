@@ -216,7 +216,7 @@
                         echo "value=\"" . $_POST["foodCals"] . "\"";
                     } ?>>
                     </br>
-                    <input id="submitMeal" type="submit" name="submit" value="Submit">
+                    <input id="submitMeal" type="submit" name="submit_food" value="Submit">
 
                     <script>
                         const servingSizeInput1 = document.getElementById('servingSize');
@@ -375,15 +375,13 @@
                         fclose($handle);
                     }
 
-                    if (isset($_POST["submit"])) {
+                    if (isset($_POST["submit_food"])) {
                         include 'mysql_connector.php';
 
                         global $conn;
 
                         $user_cal = $_COOKIE['username'];
-                        // $date_cal = date("Y-m-d");
-                        $date_cal = $current_date;
-                        echo 'what is the current date? '.$current_date;
+                        $date_cal = date("Y-m-d");
                         $selectOption = $_POST['mealType'];
 
                         $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption, $foodItemSelect);
@@ -403,8 +401,6 @@
                 Calories Intake Details
             </button>
         </form>
-            ';
-        ?>
         <br />
     <?php } else { ?>
         <h2 id="promptSignIn">

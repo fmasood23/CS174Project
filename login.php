@@ -11,12 +11,12 @@ if (!empty($_POST)) {
     $password = $_POST["password"];
     if (isset($_POST["login_button"])) {
         $userExists = checkLoginCreds($conn, $username, $password);
-        if ($userExists === TRUE) {
+        if ($userExists === "Login successful.") {
             $status = setcookie("logged_in", "true");
             $status = setcookie("username", $username);
             header("location: profile.php");
         } else {
-            $errorLogin = "Invalid login credentials.";
+            $errorLogin = $userExists;
         }
     } elseif (isset($_POST["signup_button"])) {
         $email = $_POST["email"];

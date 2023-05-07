@@ -2,13 +2,22 @@
 // find user credentials
 function checkLoginCreds($conn, $username, $password)
 {
-    $query = "SELECT * FROM Users WHERE username = ? AND password = ?";
+    $query = "SELECT * FROM Users WHERE username = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $username, $password);
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    return mysqli_num_rows($result) == 1;
+    $row_count = mysqli_num_rows($result);
+
+    if ($row_count < 1) {
+        return "User doesn't exist.";
+    } 
+    else {
+        $row = $result->fetch_assoc();
+        
+        return $password == $row["password"] ? "Login successful" : "Incorrect password.";
+    }
 }
 
 // create user account
