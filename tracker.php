@@ -310,7 +310,7 @@
                         $result = addCalories($conn, $user_cal, $date_cal, $foodCals, $selectOption, $foodItemSelect);
 
                         if ($result) {
-                            echo '<p>works</p>';
+                            echo '<meta http-equiv="refresh" content="0; URL=tracker.php">';
                         }
                     }
                 }

@@ -1,4 +1,5 @@
 <?php
+
 $foodItem = str_replace('"', '', $_POST['foodItem']);
 $servingSize = $_POST['servingSize'];
 $calorieAmount = $_POST['calorieAmount'];
