@@ -10,6 +10,7 @@
 <body>
     <?php include 'nav.php'; ?>
     <h1 id="titlename" style="text-align: center;">Calorie Intake Details</h1>
+    <hr />
 </body>
 
 </html>
