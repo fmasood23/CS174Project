@@ -95,8 +95,20 @@ select {
     margin-bottom: 20px;
 }
 
+#viewDateIntakeButton {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 #submitMeal:hover,
-#customMealBtn:hover {
+#customMealBtn:hover,
+#viewDateIntakeButton:hover {
     background-color: #5B9EA6;
     border-color: #5B9EA6;
 }
@@ -118,12 +130,14 @@ select {
     width: 50%;
 }
 
-#addMealDescription {
+#addMealDescription,
+#viewDescription {
     margin-bottom: 0;
+    font-size: 22px;
 }
 
 #mealUpdateDescription {
-    font-size: 20px;
+    font-size: 22px;
     line-height: normal;
     margin-bottom: 30px;
 }
@@ -132,17 +146,6 @@ select {
     text-align: center;
     align-items: center;
     margin: auto;
-}
-
-#viewDateIntakeButton {
-    background-color: #dcfcff;
-    margin: auto;
-    width: 20%;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    font-size: large;
-    border-radius: 10px;
 }
 
 p {

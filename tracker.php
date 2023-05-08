@@ -22,8 +22,8 @@
         $current_month = isset($_POST['month']) ? $_POST['month'] : date('m');
         $current_day = isset($_POST['day']) ? $_POST['day'] : date('d');
         $current_year = isset($_POST['year']) ? $_POST['year'] : date('Y');
-        
-        $current_date = $current_year.'-'.$current_month.'-'.$current_day;
+
+        $current_date = $current_year . '-' . $current_month . '-' . $current_day;
         ?>
         <h3 style="text-align: center;">Select a Date:</h3>
         <form id="dateForm" method="post">
@@ -97,8 +97,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                            });
         </script>
 
         <?php
@@ -164,6 +164,14 @@
                 } ?>
             </p>
         </div>
+
+        <br />
+
+        <form id="viewDateIntake" method="post" action="calorie_intake_details.php">
+            <button id="viewDateIntakeButton" type="submit">
+                Previous Calorie Intake
+            </button>
+        </form>
 
         <br />
         <div>
@@ -395,12 +403,6 @@
             </div>
             <br />
         </div>
-
-        <form id="viewDateIntake" method="post" action="calorie_intake_details.php">
-            <button id="viewDateIntakeButton" type="submit">
-                Calories Intake Details
-            </button>
-        </form>
         <br />
     <?php } else { ?>
         <h2 id="promptSignIn">
