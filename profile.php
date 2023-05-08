@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <?php include 'nav.php'; ?>
+    <?php include 'nav.php'; 
+    include 'cookies.php';
+    ?>
     <?php
     if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
         ?>

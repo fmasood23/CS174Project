@@ -99,6 +99,7 @@
                     include 'goal_functions.php';
                     include 'calories_functions.php';
                     include 'meals_functions.php';
+                    include 'cookies.php';
 
                     global $conn;
                     $username = $_POST["username"];

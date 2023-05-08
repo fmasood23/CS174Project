@@ -5,6 +5,7 @@ if (!empty($_POST)) {
     include 'mysql_connector.php';
     include 'user_functions.php';
     include 'goal_functions.php';
+    include 'cookies.php';
 
     global $conn;
     $username = $_POST["username"];
