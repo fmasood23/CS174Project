@@ -26,6 +26,26 @@ body {
     color: black;
 }
 
+#signInButton {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#signInButton:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
+}
+
+#signInForm,
+#promptSignIn {
+    text-align: center;
+}
+
 table {
     border-collapse: collapse;
     border: 1px solid black;
