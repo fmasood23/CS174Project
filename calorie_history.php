@@ -95,8 +95,8 @@
                         option.selected = true;
                     }
                     daySelect.appendChild(option);
-                                }
-                            });
+                                                }
+                                            });
                 </script>
         </div>
 
@@ -257,11 +257,14 @@
             echo "Invalid date selection.";
             echo '</p>';
         }
-
-
-    }
-
-    ?>
+    } else { ?>
+        <h2 id="promptSignIn">
+            Sign in to access our Calorie Analytics Feature!
+        </h2>
+        <form id="signInForm" method="post" action="login.php">
+            <button id="signInButton" type="submit">Sign In</button>
+        </form>
+    <?php } ?>
 </body>
 
 </html>
