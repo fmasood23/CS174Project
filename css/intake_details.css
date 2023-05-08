@@ -1,3 +1,12 @@
+body {
+    background-color: #EBF0F2;
+    ;
+}
+
+#titlename {
+    margin: 30px;
+}
+
 #meal_container {
     text-align: center;
 }
@@ -6,6 +15,7 @@
     text-align: center;
     margin: auto;
     width: 60%;
+    color: black;
 }
 
 #dateForm,
@@ -13,14 +23,26 @@
     display: flex;
     justify-content: center;
     margin: 10px;
+    color: black;
 }
 
 table {
     border-collapse: collapse;
     border: 1px solid black;
 }
-  
-th, td {
+
+th,
+td {
     border: 1px solid black;
     padding: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    color: black;
 }
