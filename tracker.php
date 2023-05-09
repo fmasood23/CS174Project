@@ -15,6 +15,7 @@
 
     <?php
     if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
+        date_default_timezone_set('America/Los_Angeles');
         $months = range(1, 12);
         $year = date('Y');
         $years = range($year - 5, $year);
@@ -97,8 +98,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                            });
         </script>
 
         <?php
