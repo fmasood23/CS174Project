@@ -195,9 +195,9 @@
                         $foodItems = array();
 
                         if (($handle = fopen("food_calories.csv", "r")) !== false) {
-                            $header = fgetcsv($handle, 564, ",");
+                            $header = fgetcsv($handle, 1000, ",");
 
-                            while (($data = fgetcsv($handle, 564, ",")) !== false) {
+                            while (($data = fgetcsv($handle, 1000, ",")) !== false) {
                                 $foodItems[] = $data;
                             }
 
@@ -381,8 +381,8 @@
                     $foodItemSelect = $_POST["foodItemSelect"];
                     $servingSize = $_POST["servingSize"];
                     if (($handle = fopen("food_calories.csv", "r")) !== false) {
-                        $header = fgetcsv($handle, 564, ",");
-                        while (($data = fgetcsv($handle, 564, ",")) !== false) {
+                        $header = fgetcsv($handle, 1000, ",");
+                        while (($data = fgetcsv($handle, 1000, ",")) !== false) {
                             if ($data[0] == $foodItemSelect) {
                                 $foodCals = ((float) $data[2] * (float) $servingSize) / (float) $data[1];
                                 break;
