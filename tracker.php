@@ -97,8 +97,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                });
         </script>
 
         <?php
