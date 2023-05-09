@@ -97,8 +97,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                });
         </script>
 
         <?php
@@ -192,7 +192,7 @@
                     <select class="equalSize" name="foodItemSelect" id="foodItemSelect" required>
                         <?php
                         $foodItems = array();
-                    
+
                         if (($handle = fopen("food_calories.csv", "r")) !== false) {
                             $header = fgetcsv($handle, 564, ",");
 
@@ -235,8 +235,10 @@
                         const servingSizeInput1 = document.getElementById('servingSize');
                         const calorieAmountInput1 = document.getElementById('foodCals');
                         const mealNameSelect1 = document.getElementById('foodItemSelect');
+                        const servingSizeInput = document.getElementById('servingSize');
 
                         mealNameSelect1.addEventListener('change', function () {
+                            servingSizeInput.value = 0;
                             calorieAmountInput1.value = 0;
                         });
 
