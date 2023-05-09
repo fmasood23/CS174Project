@@ -97,8 +97,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                        });
         </script>
 
         <?php
@@ -191,25 +191,31 @@
                     <label for="foodItemLabel">Food:</label>
                     <select class="equalSize" name="foodItemSelect" id="foodItemSelect" required>
                         <?php
+                        $foodItems = array();
+                    
                         if (($handle = fopen("food_calories.csv", "r")) !== false) {
                             $header = fgetcsv($handle, 564, ",");
+
                             while (($data = fgetcsv($handle, 564, ",")) !== false) {
-                                $selected = isset($_POST["foodItemSelect"]) && $_POST["foodItemSelect"] == $data[0] ? "selected" : "";
-                                echo "<option value=\"" .
-                                    $data[0] .
-                                    "\" data-calories=\"" .
-                                    $data[2] .
-                                    "\" data-serving-unit=\"" .
-                                    $data[3] .
-                                    "\"" . $selected . ">" .
-                                    $data[0] .
-                                    "</option>";
+                                $foodItems[] = $data;
                             }
+
                             fclose($handle);
+
+                            usort($foodItems, function ($a, $b) {
+                                return strcmp($a[0], $b[0]);
+                            });
+
+                            foreach ($foodItems as $data) {
+                                $selected = isset($_POST["foodItemSelect"]) && $_POST["foodItemSelect"] == $data[0] ? "selected" : "";
+                                echo "<option value=\"" . $data[0] . "\" data-calories=\"" . $data[2] . "\" data-serving-unit=\"" . $data[3] . "\"" . $selected . ">" . $data[0] . "</option>";
+                            }
+
                             if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
                                 $_POST["foodCals"] = 0;
                             }
-                        } ?>
+                        }
+                        ?>
                     </select>
                     </br>
                     <label for="servingSizeLabel">Serving Size:</label>
