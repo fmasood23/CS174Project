@@ -97,8 +97,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                    });
         </script>
 
         <?php
@@ -118,7 +118,6 @@
             } else {
                 $current_date .= $current_day;
             }
-            echo $current_date;
         } else {
             $current_date = date("Y-m-d");
         }

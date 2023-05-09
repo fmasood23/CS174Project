@@ -54,6 +54,11 @@ body {
     border-radius: 8px;
 }
 
+.button:hover {
+    background-color: #5B9EA6;
+    border-color: #5B9EA6;
+}
+
 img {
     width: 400px;
     float: right;
