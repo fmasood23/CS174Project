@@ -17,6 +17,7 @@
 
 <?php
 if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
+    date_default_timezone_set('America/Los_Angeles');
     include 'calories_functions.php';
     include 'mysql_connector.php';
 
@@ -104,8 +105,8 @@ if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
             option.selected = true;
         }
         daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                            });
     </script>
 
     <?php

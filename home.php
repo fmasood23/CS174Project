@@ -11,6 +11,7 @@
     <?php include 'nav.php'; ?>
     <?php
     if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
+        date_default_timezone_set('America/Los_Angeles');
         ?>
         <h2>Today's Calorie Intake</h2>
         <br />
