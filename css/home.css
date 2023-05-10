@@ -52,6 +52,7 @@ body {
     height: 50px;
     font-size: 25px;
     border-radius: 8px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .button:hover {

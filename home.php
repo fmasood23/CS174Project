@@ -68,7 +68,7 @@
             </div>
             <img
                 src="https://png.pngtree.com/png-clipart/20221021/original/pngtree-counting-calories-isolated-cartoon-vector-illustrations-png-image_8710800.png" />
-
+            <br>
         </div>
         <?php
         if (isset($_POST['login'])) {

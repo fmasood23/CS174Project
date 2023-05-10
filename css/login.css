@@ -85,6 +85,39 @@ body {
     background-color: #EBF0F2;
 }
 
+@media (max-width : 1050px) {
+    #login_wrapper {
+        margin-left: 10%;
+    }
+
+    #create_acc_wrapper {
+        margin-right: 10%;
+    }
+
+}
+
+@media (max-width : 1000px) {
+    #login_wrapper {
+        margin-left: 8.5%;
+    }
+
+    #create_acc_wrapper {
+        margin-right: 8.5%;
+    }
+
+}
+
+@media (max-width : 950px) {
+    #login_wrapper {
+        margin-left: 7%;
+    }
+
+    #create_acc_wrapper {
+        margin-right: 7%;
+    }
+
+}
+
 @media (max-width : 900px) {
     #login_wrapper {
         float: none;
