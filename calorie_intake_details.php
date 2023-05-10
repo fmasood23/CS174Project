@@ -70,7 +70,7 @@ if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
             <?php } ?>
         </select>
 
-        <button type="submit" name="get_date">Submit</button>
+        <button class="btnStyle" type="submit" name="get_date">Submit</button>
     </form>
 
     <script>
@@ -105,8 +105,8 @@ if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
             option.selected = true;
         }
         daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                        });
     </script>
 
     <?php
@@ -140,7 +140,7 @@ if (isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == "true") {
                 <td>
                     <form method="post">
                         <input type="hidden" name="meal_id" value=' . $row["id"] . '>
-                        <input type="submit" name="delete_meal" value="Delete">
+                        <input type="submit" class="btnStyle" name="delete_meal" value="Delete">
                     </form>
                 </td>
             </tr>

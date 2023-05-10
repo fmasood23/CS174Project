@@ -14,9 +14,10 @@
     border-color: #BFD1DF;
     width: 100px;
     height: 25px;
-    font-size: 15px;
+    font-size: 16px;
     border-radius: 8px;
     margin-top: 20px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #date:hover {

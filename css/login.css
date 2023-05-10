@@ -71,9 +71,10 @@ label {
     background-color: #BFD1DF;
     border-color: #BFD1DF;
     width: 100px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 8px;
     margin-top: 20px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .button:hover {

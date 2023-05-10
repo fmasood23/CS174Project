@@ -64,9 +64,10 @@ select {
     border-color: #BFD1DF;
     width: 200px;
     height: 50px;
-    font-size: 25px;
+    font-size: 30px;
     border-radius: 8px;
     margin-top: 10px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #signInButton:hover {
@@ -79,9 +80,21 @@ select {
     border-color: #BFD1DF;
     width: 100px;
     height: 25px;
-    font-size: 15px;
+    font-size: 16px;
     border-radius: 8px;
     margin-top: 10px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#submitDate {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 80px;
+    height: 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #customMealBtn {
@@ -93,6 +106,7 @@ select {
     border-radius: 8px;
     margin-top: 10px;
     margin-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #viewDateIntakeButton {
@@ -100,15 +114,17 @@ select {
     border-color: #BFD1DF;
     width: 250px;
     height: 40px;
-    font-size: 20px;
+    font-size: 22px;
     border-radius: 8px;
     margin-top: 10px;
     margin-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #submitMeal:hover,
 #customMealBtn:hover,
-#viewDateIntakeButton:hover {
+#viewDateIntakeButton:hover,
+#submitDate:hover {
     background-color: #5B9EA6;
     border-color: #5B9EA6;
 }

@@ -63,7 +63,7 @@
                 <?php } ?>
             </select>
 
-            <button type="submit" name="get_date">Submit</button>
+            <button id="submitDate" type="submit" name="get_date">Submit</button>
         </form>
 
         <script>
@@ -98,8 +98,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                    });
         </script>
 
         <?php
@@ -333,9 +333,10 @@
                         submitBtn.style.borderColor = "#BFD1DF";
                         submitBtn.style.width = "100px";
                         submitBtn.style.height = "25px";
-                        submitBtn.style.fontSize = "15px";
+                        submitBtn.style.fontSize = "16px";
                         submitBtn.style.borderRadius = "8px";
                         submitBtn.style.marginTop = "10px";
+                        submitBtn.style.fontFamily = "Times New Roman, Times, serif";
 
                         submitBtn.addEventListener("mouseenter", function (event) {
                             event.target.style.backgroundColor = "#5B9EA6";

@@ -26,17 +26,30 @@ body {
     color: black;
 }
 
+.btnStyle {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 70px;
+    height: 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-family: "Times New Roman", Times, serif;
+}
+
 #signInButton {
     background-color: #BFD1DF;
     border-color: #BFD1DF;
     width: 200px;
     height: 50px;
-    font-size: 25px;
+    font-size: 30px;
     border-radius: 8px;
     margin-top: 10px;
+    font-family: "Times New Roman", Times, serif;
 }
 
-#signInButton:hover {
+#signInButton:hover,
+.btnStyle:hover {
     background-color: #5B9EA6;
     border-color: #5B9EA6;
 }

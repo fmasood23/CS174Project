@@ -38,7 +38,7 @@
             </form>
 
             <form method="post" action="calorie_history.php">
-                <input class="button" type="submit" name="view_history" value="View Calorie History" />
+                <input class="button" type="submit" name="view_history" value="Calorie Analytics" />
             </form>
 
             <form method="post">
@@ -58,10 +58,10 @@
         ?>
     <?php } else { ?>
         <h2 id="promptSignIn">
-            Sign in to access our Calorie Tracker Feature!
+            Sign in to access our Profile Page!
         </h2>
         <form id="signInForm" method="post" action="login.php">
-            <button class="button" type="submit">Sign In</button>
+            <button id="signIn" type="submit">Sign In</button>
         </form>
     <?php }
     ?>
