@@ -30,7 +30,6 @@
                     $val .= " calories";
                     echo $val; ?>
                 </p>
-                <br />
             </div>
 
             <form method="post" action="edit_profile.php">
@@ -45,7 +44,6 @@
                 <input class="button" type="submit" name="signout" value="Sign Out" />
             </form>
         </div>
-        <br>
         <br>
 
         <?php

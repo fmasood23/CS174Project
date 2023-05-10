@@ -98,8 +98,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                });
         </script>
 
         <?php
@@ -329,8 +329,8 @@
                         submitBtn.type = 'submit';
                         submitBtn.name = 'submit';
                         submitBtn.value = 'Submit';
-                        submitBtn.style.backgroundColor = "#BFD1DF";
-                        submitBtn.style.borderColor = "#BFD1DF";
+                        submitBtn.style.backgroundColor = "#aec2d1";
+                        submitBtn.style.borderColor = "#aec2d1";
                         submitBtn.style.width = "100px";
                         submitBtn.style.height = "25px";
                         submitBtn.style.fontSize = "16px";
@@ -344,8 +344,8 @@
                         }, false);
 
                         submitBtn.addEventListener("mouseleave", function (event) {
-                            event.target.style.backgroundColor = "#BFD1DF";
-                            event.target.style.borderColor = "#BFD1DF";
+                            event.target.style.backgroundColor = "#aec2d1";
+                            event.target.style.borderColor = "#aec2d1";
                         }, false);
 
 
