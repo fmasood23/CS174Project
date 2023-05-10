@@ -61,21 +61,24 @@ body {
 
 table {
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid #35455D;
 }
 
 th,
 td {
-    border: 1px solid black;
+    border: 1px solid #35455D;
     padding: 8px;
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
 h6,
 p {
+    color: black;
+}
+
+#meal_container {
     color: black;
 }

@@ -22,7 +22,7 @@
         you on track to achieving your desired calorie intake. By visualizing calorie progress, CalorieSmart can help
         you make healthier choices.
     </p>
-
+    <br>
     <h3 class="headers">How to Use CalorieSmart?</h3>
     <p class="text"> Welcome to our application!<br><br>New users must create an account by navigating to the Login/Sign
         Up tab. After creating an account, all users will be able to login to the app. After logging in, users will be
