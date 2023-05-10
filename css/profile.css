@@ -34,8 +34,32 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
+#backBtn {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.small_button {
+    background-color: #BFD1DF;
+    border-color: #BFD1DF;
+    width: 150px;
+    height: 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-family: "Times New Roman", Times, serif;
+}
+
 .button:hover,
-#signIn:hover {
+#signIn:hover,
+.small_button:hover {
     background-color: #5B9EA6;
     border-color: #5B9EA6;
 }
@@ -77,6 +101,17 @@ img {
     border-color: #5B9EA6;
 }
 
+#edit {
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 20px solid #35455D;
+    margin-bottom: 40px;
+    background-color: #FCFEFF;
+    box-shadow: 4px 4px 5px #808080;
+}
+
 label {
     font-size: 16px;
     color: black;
@@ -85,8 +120,10 @@ label {
 #change_pass_form,
 #change_goal_form {
     margin: 20px;
+    margin-bottom: 30px;
     color: black;
     text-align: center;
+    position: relative;
 }
 
 form {

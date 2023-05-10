@@ -45,6 +45,8 @@
                 <input class="button" type="submit" name="signout" value="Sign Out" />
             </form>
         </div>
+        <br>
+        <br>
 
         <?php
         if (isset($_POST['signout'])) {
