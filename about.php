@@ -9,7 +9,11 @@
 </head>
 
 <body>
-    <?php include 'nav.php'; ?>
+    <?php 
+    include 'nav.php'; 
+    include 'cookies.php';
+    
+    ?>
 
     <h1 id="tester">About Us</h1>
     <hr />
