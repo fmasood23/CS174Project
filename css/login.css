@@ -15,10 +15,11 @@ label {
 
 #border {
     border: 20px solid #35455D;
-    background-color: #FCFEFF;
+    background-color: #d8e4e8;
     padding: 10px;
     position: relative;
     padding-bottom: 350px;
+    margin-top: 40px;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
