@@ -99,8 +99,8 @@
                 option.selected = true;
             }
             daySelect.appendChild(option);
-                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                    });
         </script>
 
         <?php
@@ -196,9 +196,9 @@
                         $foodItems = array();
 
                         if (($handle = fopen("food_calories.csv", "r")) !== false) {
-                            $header = fgetcsv($handle, 1000, ",");
+                            $header = fgetcsv($handle, 1200, ",");
 
-                            while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+                            while (($data = fgetcsv($handle, 1200, ",")) !== false) {
                                 $foodItems[] = $data;
                             }
 
@@ -210,7 +210,7 @@
 
                             foreach ($foodItems as $data) {
                                 $selected = isset($_POST["foodItemSelect"]) && $_POST["foodItemSelect"] == $data[0] ? "selected" : "";
-                                echo "<option value=\"" . $data[0] . "\" data-calories=\"" . $data[2] . "\" data-serving-unit=\"" . $data[3] . "\"" . $selected . ">" . $data[0] . "</option>";
+                                echo "<option value=\"" . $data[0] . "\" calories-from-csv=\"" . $data[2] . "\"" . $selected . ">" . $data[0] . "</option>";
                             }
 
                             if (isset($_POST["foodItemSelect"]) && isset($_POST["servingSize"])) {
@@ -234,24 +234,22 @@
                     <input id="submitMeal" type="submit" name="submit_food" value="Submit">
 
                     <script>
-                        const servingSizeInput1 = document.getElementById('servingSize');
-                        const calorieAmountInput1 = document.getElementById('foodCals');
-                        const mealNameSelect1 = document.getElementById('foodItemSelect');
                         const servingSizeInput = document.getElementById('servingSize');
+                        const calorieAmountInput = document.getElementById('foodCals');
+                        const mealNameSelect = document.getElementById('foodItemSelect');
 
-                        mealNameSelect1.addEventListener('change', function () {
+                        mealNameSelect.addEventListener('change', function () {
                             servingSizeInput.value = 0;
-                            calorieAmountInput1.value = 0;
+                            calorieAmountInput.value = 0;
                         });
 
-                        servingSizeInput1.addEventListener('input', function () {
-                            const selectedOption = mealNameSelect1.options[mealNameSelect1.selectedIndex];
-                            const caloriePerServing = parseFloat(selectedOption.getAttribute('data-calories'));
-                            const servingUnit = selectedOption.getAttribute('data-serving-unit');
-                            const servingSize = parseFloat(servingSizeInput1.value);
+                        servingSizeInput.addEventListener('input', function () {
+                            const selectedOption = mealNameSelect.options[mealNameSelect.selectedIndex];
+                            const caloriePerServing = parseFloat(selectedOption.getAttribute('calories-from-csv'));
+                            const servingSize = parseFloat(servingSizeInput.value);
                             const calorieAmount = Math.round(caloriePerServing * servingSize);
 
-                            calorieAmountInput1.value = calorieAmount;
+                            calorieAmountInput.value = calorieAmount;
                         });
                     </script>
                 </form>
@@ -383,8 +381,8 @@
                     $foodItemSelect = $_POST["foodItemSelect"];
                     $servingSize = $_POST["servingSize"];
                     if (($handle = fopen("food_calories.csv", "r")) !== false) {
-                        $header = fgetcsv($handle, 1000, ",");
-                        while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+                        $header = fgetcsv($handle, 1200, ",");
+                        while (($data = fgetcsv($handle, 1200, ",")) !== false) {
                             if ($data[0] == $foodItemSelect) {
                                 $foodCals = ((float) $data[2] * (float) $servingSize) / (float) $data[1];
                                 break;
