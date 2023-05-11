@@ -46,6 +46,7 @@ if (!empty($_POST)) {
     <title>Login or Sign Up</title>
     <link rel="stylesheet" type="text/css" href="./css/login.css" />
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/background.css" />
 </head>
 
 <body>

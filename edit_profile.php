@@ -5,7 +5,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/profile.css" />
-
+    <link rel="stylesheet" type="text/css" href="./css/background.css" />
 </head>
 
 <body>

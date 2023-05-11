@@ -5,6 +5,7 @@
     <title>Calories Intake Details</title>
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/intake_details.css" />
+    <link rel="stylesheet" type="text/css" href="./css/background.css" />
 </head>
 
 <body>

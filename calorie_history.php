@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/tracker.css" />
     <link rel="stylesheet" type="text/css" href="./css/calorie_history.css" />
+    <link rel="stylesheet" type="text/css" href="./css/background.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 

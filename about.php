@@ -5,6 +5,7 @@
     <title>About Us</title>
     <link rel="stylesheet" type="text/css" href="./css/about.css" />
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/background.css" />
 </head>
 
 <body>
