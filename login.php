@@ -52,7 +52,7 @@ if (!empty($_POST)) {
 <body>
     <?php include 'nav.php'; ?>
     <div id="screen">
-        <div id="border">
+        <div id="border" style = "background:#d8e4e8">
             <h3 id="title">Login or Sign Up!</h3>
             <div id="login_wrapper">
                 <p class="smaller_title">Sign In</p>
